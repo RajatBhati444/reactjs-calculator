@@ -1,0 +1,221 @@
+.App {
+  text-align: center !important;
+  flex: 1;
+  flex-direction: column;
+  height: 100vh;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  background: -webkit-linear-gradient(
+    90deg,
+    #d38312 10%,
+    #a83279 90%
+  ); /* Chrome 10+, Saf5.1+ */
+  background: -moz-linear-gradient(
+    90deg,
+    #d38312 10%,
+    #a83279 90%
+  ); /* FF3.6+ */
+  background: -ms-linear-gradient(90deg, #d38312 10%, #ceadc1 90%); /* IE10 */
+  background: -o-linear-gradient(
+    90deg,
+    #d38312 10%,
+    #a83279 90%
+  ); /* Opera 11.10+ */
+  background: linear-gradient(90deg, #d38312 10%, #e59bc8 90%); /* W3C */
+}
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 235px;
+  background: #57595c;
+}
+
+.inputcontainer {
+  display: flex;
+  background: #57595c;
+  flex-direction: column;
+  flex: 2;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: scroll;
+  overflow: hidden;
+}
+.input {
+  caret-color: #ff544d;
+  background: #57595c;
+  height: 30px;
+  width: 230px;
+  border: 0px;
+  color: white;
+  display: flex;
+  outline: 0;
+  flex-direction: column;
+  flex: 1;
+  font-size: 30px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: end;
+}
+
+.circularButton {
+  line-height: 15px;
+  display: flex;
+  border-radius: 50px;
+  flex: 1/2;
+  width: 20px;
+  height: 18px;
+  background: #808183;
+  border: #ff544d;
+  color: #fffaf3;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-bottom: 18px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-align: center;
+}
+
+.circularButton:hover {
+  background-color: #ff544d;
+  color: black;
+  /* border: 0.5px solid black; */
+}
+
+.button {
+  /* border: 0.2px solid #58595d; */
+  background: #808183;
+  flex-wrap: wrap;
+  flex: 0 1 100%;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+.button:active,
+.button:focus {
+  background: darkgray;
+  outline: 0;
+}
+
+.colorButton {
+  background: #ff9f0b;
+  flex-wrap: wrap;
+  flex: 0 1 100%;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+}
+
+.colorButton:focus {
+  outline: 0;
+}
+
+.operatorActive {
+  background: #ff8c00;
+  flex-wrap: wrap;
+  flex: 0 1 100%;
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  outline: 0;
+  border: 0.2px solid #58595d;
+}
+
+.colorButtonTwo {
+  border: 0.2px solid #58595d;
+  background: #68686b;
+  flex-wrap: wrap;
+  flex: 0 1 100%;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+.colorButtonTwo:focus {
+  outline: 0;
+  color: black;
+}
+
+.Allbutton {
+  display: flex;
+  flex: 7;
+  flex-direction: column;
+}
+
+.acTotwo {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.ninetoplus {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.dottoequal {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+.twobutton {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.acToplus {
+  display: flex;
+  flex: 4;
+  flex-direction: row;
+}
+
+.formm {
+  display: flex;
+  flex-direction: column;
+  background: #fffaf3;
+  width: 235px;
+  height: 323px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 10px 18px black;
+}
+.zero {
+  display: flex;
+  flex: 1;
+}
+.zerotoAll {
+  display: flex;
+  flex: 1;
+  direction: row;
+}
+
+.onClose {
+  position: absolute;
+  background: transparent;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+.scrollOutput {
+  overflow: scroll;
+  /* overflow: hidden; */
+}
+
+.portalCloseButton {
+  background: #f3d5e7;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
