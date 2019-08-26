@@ -3,6 +3,7 @@ import "./App.css";
 import Button from "./Components/Button";
 import Input from "./Components/Input";
 import PortalModel from "./Components/PortalModel";
+import { validate } from "@babel/types";
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class App extends React.Component {
       historyResult: [],
       activeButton: false,
       activeButtonName: "",
-      showForm: true
+      showForm: true,
+      buttonDisable: false,
+      dots: 0,
+      dotPress: 0
     };
     this.buttonPressed = this.buttonPressed.bind(this);
     this.acPressed = this.acPressed.bind(this);
@@ -22,6 +26,8 @@ class App extends React.Component {
     this.operatorPressed = this.operatorPressed.bind(this);
     this.handleShowMessageClick = this.handleShowMessageClick.bind(this);
     this.pressFunction = this.pressFunction.bind(this);
+    this.keyPress = this.keyPress.bind(this);
+    this.dotPresss = this.dotPresss.bind(this);
   }
 
   handleShowMessageClick = () => {
@@ -30,7 +36,7 @@ class App extends React.Component {
   };
 
   operatorPressed(child) {
-    const { result } = this.state;
+    const { result, dots } = this.state;
 
     const lastEl = result.charAt(result.length - 1);
     if (lastEl === "-" || lastEl === "+" || lastEl === "/" || lastEl === "*") {
@@ -39,13 +45,15 @@ class App extends React.Component {
       this.setState({
         result: result + child,
         activeButton: true,
-        activeButtonName: child
+        activeButtonName: child,
+        buttonDisable: false,
+        dotPress: 0
       });
     }
   }
 
   calculate() {
-    let { result, historyResult } = this.state;
+    let { result, historyResult, buttonDisable } = this.state;
     this.setState({
       activeButton: false
     });
@@ -75,7 +83,9 @@ class App extends React.Component {
           result: val
         });
         this.setState({
-          historyResult: Calculation
+          historyResult: Calculation,
+          buttonDisable: buttonDisable,
+          dots: 0
         });
       }
       if (val == "Infinity") {
@@ -88,7 +98,7 @@ class App extends React.Component {
   }
 
   buttonPressed(child) {
-    let { result } = this.state;
+    let { result, buttonDisable } = this.state;
     var n = result.startsWith(0);
     var m = result.startsWith("*");
     var o = result.startsWith("/");
@@ -138,6 +148,11 @@ class App extends React.Component {
           activeButton: false
         });
       } else {
+        if (child == ".") {
+          this.setState({
+            buttonDisable: !buttonDisable
+          });
+        }
         console.log(indexOfPlus);
         this.setState({
           result: result + child,
@@ -179,11 +194,41 @@ class App extends React.Component {
     });
   }
 
+  keyPress(val) {
+    const { result, pressDot } = this.state;
+    console.log("this is val  : " + val);
+    if (val > 0 && val < 9) {
+      this.setState({
+        result: result + val
+      });
+    }
+  }
+  dotPresss() {
+    console.log("dotPressCall");
+    const { result } = this.state;
+    this.setState({
+      result: result + "."
+    });
+  }
+
   pressFunction(e) {
+    const { dotPress } = this.state;
+    console.log(e.keyCode);
+    console.log(String.fromCharCode(e.keyCode));
     if (e.keyCode === 8) {
       this.acPressed();
     } else {
-      return;
+      this.keyPress(String.fromCharCode(e.keyCode));
+    }
+    if (e.keyCode === 190) {
+      this.setState({
+        dotPress: dotPress + 1
+      });
+      if (dotPress >= 1) {
+        console.log(this.dotPress);
+      } else {
+        this.dotPresss();
+      }
     }
   }
 
@@ -195,7 +240,8 @@ class App extends React.Component {
       historyResult,
       activeButton,
       activeButtonName,
-      showForm
+      showForm,
+      buttonDisable
     } = this.state;
 
     return (
@@ -374,6 +420,7 @@ class App extends React.Component {
                     <Button
                       className="button"
                       buttonPressed={this.buttonPressed}
+                      buttonDisable={buttonDisable}
                     >
                       .
                     </Button>
